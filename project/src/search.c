@@ -30,7 +30,7 @@ int contains(const char *line, const char *term, int ignore_case) {
 void search_file(const char *search_term, const char *filename, int ignore_case, int invert_match, int show_line_numbers) {
     FILE *file = fopen(filename, "r");
     if (!file) {
-        fprintf(stderr, "Error: Unable to open file '%s'\n", filename);
+        fprintf(stderr, "grep: %s: No such file or directory'\n", filename);
         return;
     }
 
@@ -47,9 +47,9 @@ void search_file(const char *search_term, const char *filename, int ignore_case,
         if (match) {
             pthread_mutex_lock(&print_mutex); 
             if (show_line_numbers) {
-                printf("%s:%d: ", filename, line_number);
+                printf("%s:%d:%s ", filename, line_number, line);
             } else {
-                printf("%s: ", filename);
+                printf("%s:%s", filename, line);
             }
             printf("%s", line);
             pthread_mutex_unlock(&print_mutex);
