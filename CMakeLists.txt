@@ -1,13 +1,14 @@
 cmake_minimum_required(VERSION 3.29)
-project(Test_C_In_Linux C)
+project(Grep_Command C)
 
 set(CMAKE_C_STANDARD 11)
 
 include_directories(project/modules)
+include_directories(project/src)
 
-add_executable(Test_C_In_Linux
-    project/modules/globals.h
-    project/modules/search.h
+add_executable(Grep_Command
     project/src/globals.c
     project/src/main.c
-    project/src/search.c)
+    project/src/search.c
+        project/modules/globals.h
+        project/modules/search.h)

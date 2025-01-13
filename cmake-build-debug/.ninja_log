@@ -1,5 +1,11 @@
 # ninja log v6
-3	85	7585118778068425	CMakeFiles/Test_C_In_Linux.dir/project/src/globals.c.obj	34f36eea4d093cc7
-13	110	7585118778169902	CMakeFiles/Test_C_In_Linux.dir/project/src/search.c.obj	ca24cbc6ec5c4c43
-116	302	7585118779201142	Test_C_In_Linux.exe	d1a048eb55ebafe4
-9	116	7585118778128425	CMakeFiles/Test_C_In_Linux.dir/project/src/main.c.obj	3a8d134a582a072f
+2	85	7585152776772137	CMakeFiles/Grep_Command.dir/project/src/globals.c.obj	485d5b8475c03aa7
+6	112	7585152776821947	CMakeFiles/Grep_Command.dir/project/src/main.c.obj	dc77ec4d21cdb272
+10	119	7585152776852398	CMakeFiles/Grep_Command.dir/project/src/search.c.obj	7df65e66a8e7cbdf
+119	237	7585152777944650	Grep_Command.exe	e966e6b11f62ff83
+4	141	7585153754053753	CMakeFiles/Grep_Command.dir/project/src/search.c.obj	7df65e66a8e7cbdf
+141	288	7585153755416818	Grep_Command.exe	e966e6b11f62ff83
+3	135	7585153904961039	CMakeFiles/Grep_Command.dir/project/src/search.c.obj	7df65e66a8e7cbdf
+135	242	7585153906286341	Grep_Command.exe	e966e6b11f62ff83
+4	106	7585153987725517	CMakeFiles/Grep_Command.dir/project/src/search.c.obj	7df65e66a8e7cbdf
+106	235	7585153988746078	Grep_Command.exe	e966e6b11f62ff83

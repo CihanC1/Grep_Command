@@ -1,4 +1,10 @@
-"C:\Program Files\JetBrains\CLion 2024.2.3\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2024.2.3/bin/ninja/win/x64/ninja.exe" -G Ninja -S C:\Users\cihan\CLionProjects\Test_C_In_Linux -B C:\Users\cihan\CLionProjects\Test_C_In_Linux\cmake-build-debug
--- Configuring done (0.2s)
+"C:\Program Files\JetBrains\CLion 2024.2.3\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2024.2.3/bin/ninja/win/x64/ninja.exe" -G Ninja -S C:\Users\cihan\CLionProjects\Grep_Command -B C:\Users\cihan\CLionProjects\Grep_Command\cmake-build-debug
+-- The C compiler identification is GNU 13.1.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Program Files/JetBrains/CLion 2024.2.3/bin/mingw/bin/gcc.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (0.8s)
 -- Generating done (0.0s)
--- Build files have been written to: C:/Users/cihan/CLionProjects/Test_C_In_Linux/cmake-build-debug
+-- Build files have been written to: C:/Users/cihan/CLionProjects/Grep_Command/cmake-build-debug

@@ -47,9 +47,9 @@ void search_file(const char *search_term, const char *filename, int ignore_case,
         if (match) {
             pthread_mutex_lock(&print_mutex); 
             if (show_line_numbers) {
-                printf("%s:%d:%s ", filename, line_number, line);
+                printf("%s:%d:%s \n", filename, line_number, line);
             } else {
-                printf("%s:%s", filename, line);
+                printf("%s: %s \n", filename, line);
             }
             printf("%s", line);
             pthread_mutex_unlock(&print_mutex);

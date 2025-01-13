@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: Test_C_In_Linux
+# Project: Grep_Command
 # Configurations: Debug
 # =============================================================================
 
@@ -39,61 +39,61 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:/Users/cihan/CLionProjects/Test_C_In_Linux/cmake-build-debug/
+cmake_ninja_workdir = C$:/Users/cihan/CLionProjects/Grep_Command/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target Test_C_In_Linux
+# Object build statements for EXECUTABLE target Grep_Command
 
 
 #############################################
-# Order-only phony target for Test_C_In_Linux
+# Order-only phony target for Grep_Command
 
-build cmake_object_order_depends_target_Test_C_In_Linux: phony || .
+build cmake_object_order_depends_target_Grep_Command: phony || .
 
-build CMakeFiles/Test_C_In_Linux.dir/project/src/globals.c.obj: C_COMPILER__Test_C_In_Linux_unscanned_Debug C$:/Users/cihan/CLionProjects/Test_C_In_Linux/project/src/globals.c || cmake_object_order_depends_target_Test_C_In_Linux
-  DEP_FILE = CMakeFiles\Test_C_In_Linux.dir\project\src\globals.c.obj.d
+build CMakeFiles/Grep_Command.dir/project/src/globals.c.obj: C_COMPILER__Grep_Command_unscanned_Debug C$:/Users/cihan/CLionProjects/Grep_Command/project/src/globals.c || cmake_object_order_depends_target_Grep_Command
+  DEP_FILE = CMakeFiles\Grep_Command.dir\project\src\globals.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/cihan/CLionProjects/Test_C_In_Linux/project/modules
-  OBJECT_DIR = CMakeFiles\Test_C_In_Linux.dir
-  OBJECT_FILE_DIR = CMakeFiles\Test_C_In_Linux.dir\project\src
+  INCLUDES = -IC:/Users/cihan/CLionProjects/Grep_Command/project/modules -IC:/Users/cihan/CLionProjects/Grep_Command/project/src
+  OBJECT_DIR = CMakeFiles\Grep_Command.dir
+  OBJECT_FILE_DIR = CMakeFiles\Grep_Command.dir\project\src
 
-build CMakeFiles/Test_C_In_Linux.dir/project/src/main.c.obj: C_COMPILER__Test_C_In_Linux_unscanned_Debug C$:/Users/cihan/CLionProjects/Test_C_In_Linux/project/src/main.c || cmake_object_order_depends_target_Test_C_In_Linux
-  DEP_FILE = CMakeFiles\Test_C_In_Linux.dir\project\src\main.c.obj.d
+build CMakeFiles/Grep_Command.dir/project/src/main.c.obj: C_COMPILER__Grep_Command_unscanned_Debug C$:/Users/cihan/CLionProjects/Grep_Command/project/src/main.c || cmake_object_order_depends_target_Grep_Command
+  DEP_FILE = CMakeFiles\Grep_Command.dir\project\src\main.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/cihan/CLionProjects/Test_C_In_Linux/project/modules
-  OBJECT_DIR = CMakeFiles\Test_C_In_Linux.dir
-  OBJECT_FILE_DIR = CMakeFiles\Test_C_In_Linux.dir\project\src
+  INCLUDES = -IC:/Users/cihan/CLionProjects/Grep_Command/project/modules -IC:/Users/cihan/CLionProjects/Grep_Command/project/src
+  OBJECT_DIR = CMakeFiles\Grep_Command.dir
+  OBJECT_FILE_DIR = CMakeFiles\Grep_Command.dir\project\src
 
-build CMakeFiles/Test_C_In_Linux.dir/project/src/search.c.obj: C_COMPILER__Test_C_In_Linux_unscanned_Debug C$:/Users/cihan/CLionProjects/Test_C_In_Linux/project/src/search.c || cmake_object_order_depends_target_Test_C_In_Linux
-  DEP_FILE = CMakeFiles\Test_C_In_Linux.dir\project\src\search.c.obj.d
+build CMakeFiles/Grep_Command.dir/project/src/search.c.obj: C_COMPILER__Grep_Command_unscanned_Debug C$:/Users/cihan/CLionProjects/Grep_Command/project/src/search.c || cmake_object_order_depends_target_Grep_Command
+  DEP_FILE = CMakeFiles\Grep_Command.dir\project\src\search.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/cihan/CLionProjects/Test_C_In_Linux/project/modules
-  OBJECT_DIR = CMakeFiles\Test_C_In_Linux.dir
-  OBJECT_FILE_DIR = CMakeFiles\Test_C_In_Linux.dir\project\src
+  INCLUDES = -IC:/Users/cihan/CLionProjects/Grep_Command/project/modules -IC:/Users/cihan/CLionProjects/Grep_Command/project/src
+  OBJECT_DIR = CMakeFiles\Grep_Command.dir
+  OBJECT_FILE_DIR = CMakeFiles\Grep_Command.dir\project\src
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target Test_C_In_Linux
+# Link build statements for EXECUTABLE target Grep_Command
 
 
 #############################################
-# Link the executable Test_C_In_Linux.exe
+# Link the executable Grep_Command.exe
 
-build Test_C_In_Linux.exe: C_EXECUTABLE_LINKER__Test_C_In_Linux_Debug CMakeFiles/Test_C_In_Linux.dir/project/src/globals.c.obj CMakeFiles/Test_C_In_Linux.dir/project/src/main.c.obj CMakeFiles/Test_C_In_Linux.dir/project/src/search.c.obj
+build Grep_Command.exe: C_EXECUTABLE_LINKER__Grep_Command_Debug CMakeFiles/Grep_Command.dir/project/src/globals.c.obj CMakeFiles/Grep_Command.dir/project/src/main.c.obj CMakeFiles/Grep_Command.dir/project/src/search.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\Test_C_In_Linux.dir
+  OBJECT_DIR = CMakeFiles\Grep_Command.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = Test_C_In_Linux.exe
-  TARGET_IMPLIB = libTest_C_In_Linux.dll.a
-  TARGET_PDB = Test_C_In_Linux.exe.dbg
+  TARGET_FILE = Grep_Command.exe
+  TARGET_IMPLIB = libGrep_Command.dll.a
+  TARGET_PDB = Grep_Command.exe.dbg
 
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\cihan\CLionProjects\Test_C_In_Linux\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.2.3\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\cihan\CLionProjects\Grep_Command\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.2.3\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -104,7 +104,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\cihan\CLionProjects\Test_C_In_Linux\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.2.3\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\cihan\CLionProjects\Test_C_In_Linux -BC:\Users\cihan\CLionProjects\Test_C_In_Linux\cmake-build-debug"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\cihan\CLionProjects\Grep_Command\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.2.3\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\cihan\CLionProjects\Grep_Command -BC:\Users\cihan\CLionProjects\Grep_Command\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -114,7 +114,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build Test_C_In_Linux: phony Test_C_In_Linux.exe
+build Grep_Command: phony Grep_Command.exe
 
 # =============================================================================
 # Folder targets.
@@ -122,9 +122,9 @@ build Test_C_In_Linux: phony Test_C_In_Linux.exe
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/cihan/CLionProjects/Test_C_In_Linux/cmake-build-debug
+# Folder: C:/Users/cihan/CLionProjects/Grep_Command/cmake-build-debug
 
-build all: phony Test_C_In_Linux.exe
+build all: phony Grep_Command.exe
 
 # =============================================================================
 # Built-in targets
@@ -133,14 +133,14 @@ build all: phony Test_C_In_Linux.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake C$:/Users/cihan/CLionProjects/Test_C_In_Linux/CMakeLists.txt CMakeCache.txt CMakeFiles/3.29.6/CMakeCCompiler.cmake CMakeFiles/3.29.6/CMakeRCCompiler.cmake CMakeFiles/3.29.6/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake C$:/Users/cihan/CLionProjects/Grep_Command/CMakeLists.txt CMakeCache.txt CMakeFiles/3.29.6/CMakeCCompiler.cmake CMakeFiles/3.29.6/CMakeRCCompiler.cmake CMakeFiles/3.29.6/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake C$:/Users/cihan/CLionProjects/Test_C_In_Linux/CMakeLists.txt CMakeCache.txt CMakeFiles/3.29.6/CMakeCCompiler.cmake CMakeFiles/3.29.6/CMakeRCCompiler.cmake CMakeFiles/3.29.6/CMakeSystem.cmake: phony
+build C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake C$:/Users/cihan/CLionProjects/Grep_Command/CMakeLists.txt CMakeCache.txt CMakeFiles/3.29.6/CMakeCCompiler.cmake CMakeFiles/3.29.6/CMakeRCCompiler.cmake CMakeFiles/3.29.6/CMakeSystem.cmake: phony
 
 
 #############################################
