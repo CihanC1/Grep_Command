@@ -1,1 +1,0 @@
-# Test C in Linux
