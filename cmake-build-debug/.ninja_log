@@ -1,0 +1,5 @@
+# ninja log v6
+3	85	7585118778068425	CMakeFiles/Test_C_In_Linux.dir/project/src/globals.c.obj	34f36eea4d093cc7
+13	110	7585118778169902	CMakeFiles/Test_C_In_Linux.dir/project/src/search.c.obj	ca24cbc6ec5c4c43
+116	302	7585118779201142	Test_C_In_Linux.exe	d1a048eb55ebafe4
+9	116	7585118778128425	CMakeFiles/Test_C_In_Linux.dir/project/src/main.c.obj	3a8d134a582a072f
