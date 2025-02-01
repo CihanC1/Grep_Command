@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Grep Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/cmake-build-debug/Grep_Command.exe",
+            "args": ["-i", "test", "test1.txt"],
+            "cwd": "${workspaceFolder}",
+            "MIMode": "gdb",
+            "externalConsole": true,
+            "preLaunchTask": "Build Grep (CMake)"
+        }
+    ]
+}

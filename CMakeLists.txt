@@ -10,5 +10,7 @@ add_executable(Grep_Command
     project/src/globals.c
     project/src/main.c
     project/src/search.c
+    project/src/args_parser.c
         project/modules/globals.h
-        project/modules/search.h)
+        project/modules/search.h
+        project(/modules/args_parser.h))
