@@ -4,6 +4,7 @@
 #include "../modules/args_parser.h"
 
 Arguments parse_arguments(int argc, char *argv[]) {
+
     Arguments args = {false, false, false, false, NULL, NULL, 0};
 
     if (argc < 3) {
@@ -12,6 +13,7 @@ Arguments parse_arguments(int argc, char *argv[]) {
     }
 
     args.files = malloc((argc - 1) * sizeof(char *));
+
     args.file_count = 0;
 
     for (int i = 1; i < argc; i++) {
@@ -31,7 +33,7 @@ Arguments parse_arguments(int argc, char *argv[]) {
     }
 
     if (args.pattern == NULL || args.file_count == 0) {
-        fprintf(stderr, "Hata: Bir desen ve en az bir dosya belirtilmelidir!\n");
+        fprintf(stderr, "Error: One pattern and at least one file must be specified!\n");
         exit(EXIT_FAILURE);
     }
 

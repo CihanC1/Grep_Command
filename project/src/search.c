@@ -45,7 +45,7 @@ int search_file(const char *search_term, const char *filename, int ignore_case, 
         }
 
         if (match) {
-            if (!count_only) {  // -c aktif değilse yazdır
+            if (!count_only) {  
                 pthread_mutex_lock(&print_mutex);
                 if (show_line_numbers) {
                     printf("%s:%d:%s", filename, line_number, line);
@@ -54,7 +54,7 @@ int search_file(const char *search_term, const char *filename, int ignore_case, 
                 }
                 pthread_mutex_unlock(&print_mutex);
             }
-            match_count++;  // Eşleşme sayısını artır
+            match_count++;  
         }
         line_number++;
     }
@@ -62,12 +62,12 @@ int search_file(const char *search_term, const char *filename, int ignore_case, 
     fclose(file);
 
     if (count_only) {
-        return match_count;  // -c modunda sadece eşleşme sayısını döndür
+        return match_count;  
     }
 
     pthread_mutex_lock(&print_mutex);
     printf("\nFile '%s': %d match(es) found.\n", filename, match_count);
     pthread_mutex_unlock(&print_mutex);
 
-    return 0;  // Normal modda döndür
+    return 0;  
 }

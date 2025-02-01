@@ -6,7 +6,7 @@
 #include "../modules/search.h"
 #include "../modules/args_parser.h"
 
-// Thread çalıştırma fonksiyonu
+
 void *thread_function(void *arg) {
     ThreadData *data = (ThreadData *)arg;
     search_file(data->search_term, data->filename, data->ignore_case, data->invert_match, data->show_line_numbers, 0); // 0 = normal mod
@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    // Argümanları parse et
+   
     Arguments args = parse_arguments(argc, argv);
 
     // -c (count) flag'i kontrolü
@@ -28,15 +28,15 @@ int main(int argc, char *argv[]) {
         for (int i = 0; i < args.file_count; i++) {
             total_matches += search_file(args.pattern, args.files[i], args.case_insensitive, args.invert_match, args.show_line_numbers, 1); // 1 = count mode
         }
-        printf("%d\n", total_matches);  // Eşleşme sayısını yazdır
+        printf("%d\n", total_matches);  
         free(args.files);
-        return 0;  // Programı bitir
+        return 0;  
     }
 
-    // Normal modda thread başlatma
+
     pthread_t threads[MAX_FILES];
     ThreadData thread_data[MAX_FILES];
-    int thread_count = 0;  // Thread sayacını burada tanımla
+    int thread_count = 0;  
 
     for (int i = 0; i < args.file_count; i++) {
         thread_data[i].search_term = args.pattern;
@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
         thread_data[i].invert_match = args.invert_match;
         thread_data[i].show_line_numbers = args.show_line_numbers;
 
-        // Thread oluştur
+       
         if (pthread_create(&threads[i], NULL, thread_function, &thread_data[i]) != 0) {
             perror("Thread oluşturulamadı!");
             continue;
@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
         thread_count++; 
     }
 
-    // Thread'lerin bitmesini bekle
+    
     for (int i = 0; i < thread_count; i++) {
         pthread_join(threads[i], NULL);
     }

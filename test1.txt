@@ -1,5 +1,6 @@
-This is a test file deneme 
-deneme bir 
-deneme
-ki
-deneme eijfijeö this
+deneme bir
+ikinci satır
+üçüncü deneme
+basit test
+dördüncü satır
+deneme tekrar
