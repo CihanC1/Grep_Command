@@ -11,10 +11,12 @@ endif
 
 # Derleme Ayarları
 CFLAGS = -std=c11 -Wall -Wextra -pthread -Iproject/modules
+LDFLAGS = -lc  # Standart C kütüphanesi bağlantısı (özellikle MinGW için gerekli)
+OBJ_DIR = project/src
 
 # Hedef ve Kaynak Dosyalar
 TARGET = mygrep
-SOURCES = project/src/main.c project/src/search.c project/src/globals.c project/src/args_parser.c
+SOURCES = $(OBJ_DIR)/main.c $(OBJ_DIR)/search.c $(OBJ_DIR)/globals.c $(OBJ_DIR)/args_parser.c
 OBJECTS = $(SOURCES:.c=.o)
 
 # Varsayılan Hedef
@@ -22,15 +24,15 @@ all: $(TARGET)$(EXE)
 
 # Derleme Komutu
 $(TARGET)$(EXE): $(OBJECTS)
-	$(CC) $(CFLAGS) -o $(TARGET)$(EXE) $(OBJECTS)
+	$(CC) $(CFLAGS) -o $(TARGET)$(EXE) $(OBJECTS) $(LDFLAGS)
 
 # Object Dosyalarının Derlenmesi
-%.o: %.c
+$(OBJ_DIR)/%.o: $(OBJ_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Temizleme Komutu
 clean:
-	-$(RM) project/src/*.o $(TARGET)$(EXE) 2>nul || true
+	-$(RM) $(OBJ_DIR)/*.o $(TARGET)$(EXE) 2>/dev/null || true
 
 # Test Komutu
 test: $(TARGET)$(EXE)

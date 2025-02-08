@@ -1,6 +1,1 @@
-merhaba dünya
-deneme başarılı
-kod yazmak eğlenceli
-satır deneme testi
-test yapıyoruz
-geliştirici notu
+Bu ikinci bir test dosyasıdır. grep için farklı bir içerik var.

@@ -1,7 +1,7 @@
 CC = gcc
-CFLAGS = -std=c11 -Wall -Wextra -pthread -I../modules
+CFLAGS = -std=c11 -Wall -Wextra -pthread -Iproject/modules
 TARGET = mygrep
-SOURCES = main.c search.c globals.c
+SOURCES = project/src/main.c project/src/search.c project/src/globals.c
 OBJECTS = $(SOURCES:.c=.o)
 
 all: $(TARGET)
@@ -9,20 +9,19 @@ all: $(TARGET)
 $(TARGET): $(OBJECTS)
 	$(CC) $(CFLAGS) -o $@ $(OBJECTS)
 
-main.o: main.c ../modules/globals.h ../modules/search.h
-	$(CC) $(CFLAGS) -c main.c
+project/src/main.o: project/src/main.c project/modules/globals.h project/modules/search.h
+	$(CC) $(CFLAGS) -c project/src/main.c -o project/src/main.o
 
-search.o: search.c ../modules/globals.h ../modules/search.h
-	$(CC) $(CFLAGS) -c search.c
+project/src/search.o: project/src/search.c project/modules/globals.h project/modules/search.h
+	$(CC) $(CFLAGS) -c project/src/search.c -o project/src/search.o
 
-globals.o: globals.c ../modules/globals.h
-	$(CC) $(CFLAGS) -c globals.c
+project/src/globals.o: project/src/globals.c project/modules/globals.h
+	$(CC) $(CFLAGS) -c project/src/globals.c -o project/src/globals.o
 
 clean:
-	rm -f $(OBJECTS) $(TARGET)
+	rm -f project/src/*.o mygrep
 
 test: $(TARGET)
-	./$(TARGET) --test
+	./$(TARGET) "deneme" test1.txt
 
 .PHONY: all clean test
-

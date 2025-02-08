@@ -1,6 +1,4 @@
-deneme bir
-ikinci satır
-üçüncü deneme
-basit test
-dördüncü satır
-deneme tekrar
+Bu bir test dosyasıdır.
+Aranacak kelime burada geçiyor.
+Bu satırda test kelimesi ve KELİME de var.
+

@@ -1,10 +1,16 @@
 #ifndef SEARCH_H
+#define SEARCH_H
+
 #include "globals.h"
 
-#define SEARCH_H
-//change to int. for -c flag 
-int search_file(const char *search_term, const char *filename, int ignore_case, int invert_match, int show_line_numbers, int count_only);
+int search_file(const char *search_term, const char *filename, int ignore_case, int invert_match, int show_line_numbers, int count_only, SearchResultList *results);
 
+void *search_directory_thread(void *arg);
+
+void search_directory(const char *dir_name, const char *search_term, int ignore_case, int invert_match, int show_line_numbers, int count_only, SearchResultList *results);
+
+void add_search_result(SearchResultList *list, const char *filename, int line_number, const char *line_content);
+
+void free_search_results(SearchResultList *list);
 
 #endif
-
