@@ -21,8 +21,10 @@ int main(int argc, char *argv[]) {
 
     Arguments args = parse_arguments(argc, argv);
 
-    // **Debug Çıktısı**
-           args.case_insensitive, args.invert_match, args.count_matches, args.show_line_numbers, args.recursive;
+#ifdef DEBUG
+printf("Args: case_insensitive=%d, invert_match=%d, count_matches=%d, show_line_numbers=%d, recursive=%d\n",
+       args.case_insensitive, args.invert_match, args.count_matches, args.show_line_numbers, args.recursive);
+#endif
 
     // **THREAD-SAFE BELLEK TAHSİSİ**
     SearchResultList *results = malloc(sizeof(SearchResultList));

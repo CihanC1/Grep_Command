@@ -1,3 +1,4 @@
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -20,16 +21,16 @@ void to_lowercase(char *str) {
     }
 }
 
+#pragma GCC diagnostic ignored "-Wnonnull-compare"
 
 char *strcasestr(const char *haystack, const char *needle) {
-    if (!haystack || !needle) return NULL;
+    if (haystack == NULL || needle == NULL) return NULL;
     size_t len_h = strlen(haystack), len_n = strlen(needle);
     for (size_t i = 0; i <= len_h - len_n; i++) {
         if (strncasecmp(&haystack[i], needle, len_n) == 0) {
             return (char *)&haystack[i];
         }
     }
-
     return NULL;
 }
 
@@ -132,7 +133,7 @@ int search_file(const char *search_term, const char *filename, int ignore_case, 
             if (!count_only) {
                 printf("%s: ", filename);
                 if (show_line_numbers) {
-                    printf("[%d] ", line_number);
+                    printf("%d:", line_number);
                 }
                 highlight_matches(line, search_term, ignore_case);
             }

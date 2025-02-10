@@ -1,4 +1,0 @@
-Bu bir test dosyasıdır.
-Aranacak kelime burada geçiyor.
-Bu satırda test kelimesi ve KELİME de var.
-

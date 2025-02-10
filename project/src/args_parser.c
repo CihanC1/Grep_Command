@@ -4,7 +4,7 @@
 #include "../modules/args_parser.h"
 
 Arguments parse_arguments(int argc, char *argv[]) {
-    Arguments args = {false, false, false, false, NULL, NULL, 0}; 
+    Arguments args = {false, false, false, false, NULL, NULL, 0, 0}; 
 
     if (argc < 3) {
         fprintf(stderr, "Nutzung: grep [OPTIONEN] SUCHBEGRIFF DATEI…\n");
@@ -43,10 +43,13 @@ Arguments parse_arguments(int argc, char *argv[]) {
             }
             
     }
+   
+      #ifdef DEBUG
+printf("Args: case_insensitive=%d, invert_match=%d, count_matches=%d, show_line_numbers=%d, recursive=%d\n",
+       args.case_insensitive, args.invert_match, args.count_matches, args.show_line_numbers, args.recursive);
+#endif
 
-           args.case_insensitive, args.invert_match, args.count_matches, args.show_line_numbers, args.recursive;
-
-    if (args.pattern == NULL || args.file_count == 0) {
+if (args.pattern == NULL || args.file_count == 0) {
 
         fprintf(stderr, "Fehler: Mindestens eine Datei und ein Suchbegriff müssen angegeben werden!\n");
         exit(EXIT_FAILURE);
