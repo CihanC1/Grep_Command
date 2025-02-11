@@ -16,7 +16,7 @@ OBJ_DIR = project/src
 
 # Hedef ve Kaynak Dosyalar
 TARGET = mygrep
-SOURCES = $(OBJ_DIR)/main.c $(OBJ_DIR)/search.c $(OBJ_DIR)/globals.c $(OBJ_DIR)/args_parser.c
+SOURCES = $(OBJ_DIR)/main.c $(OBJ_DIR)/search.c $(OBJ_DIR)/globals.c $(OBJ_DIR)/args_parser.c $(OBJ_DIR)/thread.c
 OBJECTS = $(SOURCES:.c=.o)
 
 # Varsayılan Hedef

@@ -2,7 +2,7 @@
 #define GLOBALS_H
 
 #include <pthread.h>
-#define MAX_THREADS 100  
+#define MAX_GLOBAL_THREADS 100  
 
 #define MAX_FILES 10
 #define BUFFER_SIZE 1024

@@ -6,10 +6,10 @@
 
 
 typedef struct {
-    bool case_insensitive; // -i
-    bool invert_match;     // -v
-    bool count_matches;    // -c
-    bool show_line_numbers; // -n
+    int case_insensitive; // -i
+    int invert_match;     // -v
+    int count_matches;    // -c
+    int show_line_numbers; // -n
     char *pattern;   
     bool recursive;      
     char **files;         

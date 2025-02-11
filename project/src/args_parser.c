@@ -4,7 +4,7 @@
 #include "../modules/args_parser.h"
 
 Arguments parse_arguments(int argc, char *argv[]) {
-    Arguments args = {false, false, false, false, NULL, NULL, 0, 0}; 
+    Arguments args = {0, 0, 0, 0, NULL, NULL, 0, 0}; 
 
     if (argc < 3) {
         fprintf(stderr, "Nutzung: grep [OPTIONEN] SUCHBEGRIFF DATEI…\n");
@@ -22,19 +22,19 @@ Arguments parse_arguments(int argc, char *argv[]) {
     for (int i = 1; i < argc; i++) { 
 
         if (strcmp(argv[i], "-i") == 0) {
-            args.case_insensitive = true;
+    		args.case_insensitive = 1;
         } 
         else if (strcmp(argv[i], "-v") == 0) {
-            args.invert_match = true;
+            args.invert_match = 1;
         }
          else if (strcmp(argv[i], "-c") == 0) {
-            args.count_matches = true;
+            args.count_matches = 1;
         }
          else if (strcmp(argv[i], "-n") == 0) {
-            args.show_line_numbers = true;
+            args.show_line_numbers = 1;
         } 
         else if (strcmp(argv[i], "-r") == 0) {  
-            args.recursive = true;
+            args.recursive = 1;
           
         }  else if (args.pattern == NULL) {
                 args.pattern = argv[i]; 

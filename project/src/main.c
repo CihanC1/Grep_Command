@@ -3,80 +3,78 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <unistd.h> // for sleep()
 #include "../modules/globals.h"
 #include "../modules/search.h"
 #include "../modules/args_parser.h"
+#include "../modules/thread.h"
 
-void *thread_function(void *arg) {
-    ThreadData *data = (ThreadData *)arg;
-    search_file(data->search_term, data->filename, data->ignore_case, data->invert_match, data->show_line_numbers, data->count_only, data->results);
-    return NULL;
-}
+#define TASK_CAPACITY 100  // Maximum number of tasks in the queue
 
-int main(int argc, char *argv[]) {
-    if (argc < 3) {
+static thread_pool_t pool; // Define thread pool globally
+
+int main(int argc, char *argv[])
+{
+    if (argc < 3)
+    {
         printf("Usage: %s [-i] [-v] [-n] [-c] [-r] <search_term> <file1> [file2 ...]\n", argv[0]);
         return 1;
     }
 
+    // **Parse Command-Line Arguments**
     Arguments args = parse_arguments(argc, argv);
 
-#ifdef DEBUG
-printf("Args: case_insensitive=%d, invert_match=%d, count_matches=%d, show_line_numbers=%d, recursive=%d\n",
-       args.case_insensitive, args.invert_match, args.count_matches, args.show_line_numbers, args.recursive);
-#endif
+    #ifdef DEBUG
+    printf("Args: case_insensitive=%d, invert_match=%d, count_matches=%d, show_line_numbers=%d, recursive=%d\n",
+           args.case_insensitive, args.invert_match, args.count_matches, args.show_line_numbers, args.recursive);
+    #endif
 
-    // **THREAD-SAFE BELLEK TAHSİSİ**
+    // **Initialize the Thread Pool**
+    thread_pool_init(&pool, TASK_CAPACITY, &args);  
+
+    // **Allocate Memory for Results (Thread-Safe)**
     SearchResultList *results = malloc(sizeof(SearchResultList));
-    if (!results) {
+    if (!results)
+    {
         fprintf(stderr, "Memory allocation failed!\n");
         exit(1);
     }
     results->head = NULL;
     pthread_mutex_init(&results->mutex, NULL);
 
-    pthread_t threads[MAX_FILES];
-    ThreadData *thread_data = malloc(args.file_count * sizeof(ThreadData));
-    if (!thread_data) {
-        fprintf(stderr, "ThreadData memory allocation failed!\n");
-        exit(1);
-    }
-
-    for (int i = 0; i < args.file_count; i++) {
+    // **Iterate Over Files and Add Tasks**
+    for (int i = 0; i < args.file_count; i++)
+    {
         struct stat path_stat;
         stat(args.files[i], &path_stat);
 
-        if (S_ISDIR(path_stat.st_mode)) {
-            if (args.recursive) {
-                search_directory(args.files[i], args.pattern, args.case_insensitive, args.invert_match, args.show_line_numbers, args.count_matches, results);
-            } else {
-                fprintf(stderr, "Fehler: %s ist ein Verzeichnis, aber das -r-Flag wurde nicht angegeben.\n", args.files[i]);
+        if (S_ISDIR(path_stat.st_mode))
+        {
+            if (args.recursive)
+            {
+		    printf("[ONEMLI DEBUG]! Ne zaman giriyor buraya ve burasi neden threadste degil?");
+                search_directory(args.files[i], args.pattern, args.case_insensitive, args.invert_match, 
+                                 args.show_line_numbers, args.count_matches, results);
             }
-        } else {
-            thread_data[i].search_term = args.pattern;
-            thread_data[i].filename = args.files[i];
-            thread_data[i].ignore_case = args.case_insensitive;
-            thread_data[i].invert_match = args.invert_match;
-            thread_data[i].show_line_numbers = args.show_line_numbers;
-            thread_data[i].count_only = args.count_matches;
-            thread_data[i].results = results;
-
-            pthread_create(&threads[i], NULL, thread_function, &thread_data[i]);
+            else
+            {
+                fprintf(stderr, "Error: %s is a directory, but -r flag was not provided.\n", args.files[i]);
+            }
+        }
+        else
+        {
+            thread_pool_add_task(&pool, args.files[i], args.pattern);
         }
     }
 
-    for (int i = 0; i < args.file_count; i++) {
-        pthread_join(threads[i], NULL);
-    }
+    // **Wait for Tasks to Complete**
+    sleep(1);  // Adjust if needed to allow workers to process tasks
 
-  
-    for (int i = 0; i < args.file_count; i++) {
-        pthread_join(threads[i], NULL);
-    }
-    
-    // **BELLEK TEMİZLEME (NULL KONTROLLERİ EKLENDİ!)**
+    // **Shutdown and Cleanup**
+    thread_pool_destroy(&pool);
     free_search_results(results);
-    free(thread_data);
     free(args.files);
-    
+
+    return 0;
 }
+

@@ -113,32 +113,71 @@ void highlight_matches(const char *line, const char *search_term, int ignore_cas
 
 
 int search_file(const char *search_term, const char *filename, int ignore_case, int invert_match, int show_line_numbers, int count_only, SearchResultList *results) {
-    if (!search_term || !filename || !results) return 0;
-
+/*if (!search_term) {
+    printf("[ERROR] search_file(): search_term is NULL\n");
+    fflush(stdout);
+}
+if (!filename) {
+    printf("[ERROR] search_file(): filename is NULL\n");
+    fflush(stdout);
+}
+if (!results) {
+    printf("[ERROR] search_file(): results is NULL\n");
+    fflush(stdout);
+}
+*/
+if (!search_term || !filename || !results) {
+    printf("[DEBUG/ERROR] search_file() exited early due to NULL parameter.\n");
+    fflush(stdout);
+    return 0;
+}
+/*printf("[DEBUG] search_file() çalışıyor: '%s' içinde '%s' aranıyor...\n", filename, search_term);
+fflush(stdout);
+*/
     FILE *file = fopen(filename, "r");
     if (!file) {
         fprintf(stderr, "grep: %s: No such file or directory\n", filename);
-        return 0;
+fflush(stdout);
+    perror("[ERROR] fopen");
+	return 0;
     }
-
+/*printf("[DEBUG] File opened successfully: %s\n", filename);
+fflush(stdout);
+*/
     char line[BUFFER_SIZE];
     int line_number = 1, match_count = 0;
 
     while (fgets(line, sizeof(line), file)) {
-        int match = ignore_case ? (strcasestr(line, search_term) != NULL) : (strstr(line, search_term) != NULL);
-        if (invert_match) match = !match;
+/*printf("[DEBUG] Satır okundu: %s", line);
+fflush(stdout);
+*/
+/*printf("[DEBUG] search_file() çağırıldı: '%s' içinde '%s' aranıyor... Case-Insensitive: %d\n", filename, search_term, ignore_case);
+fflush(stdout);
+*/
+	    int match = ignore_case ? (strcasestr(line, search_term) != NULL) : (strstr(line, search_term) != NULL);
+/*	    printf("[DEBUG] Checking match: '%s' içinde '%s' -> Case-Insensitive: %d\n", line, search_term, ignore_case);
+fflush(stdout);
+*/
+	    if (invert_match) match = !match;
 
         if (match) {
-            match_count++;
+/*           printf("[DEBUG] Match found in file: %s | Line %d: %s\n", filename, line_number, line);
+fflush(stdout);
+*/
+	       	match_count++;
             if (!count_only) {
                 printf("%s: ", filename);
+fflush(stdout);
+
                 if (show_line_numbers) {
                     printf("%d:", line_number);
+fflush(stdout);
+
                 }
                 highlight_matches(line, search_term, ignore_case);
             }
-            add_search_result(results, filename, line_number, line);
-        }
+
+	}
         line_number++;
     }
 
@@ -146,9 +185,13 @@ int search_file(const char *search_term, const char *filename, int ignore_case, 
 
     if (count_only) {
         printf("%s: %d\n", filename, match_count);
-    }
+fflush(stdout);
 
-    return count_only ? match_count : 0;
+    }
+/*printf("[DEBUG] search_file() called with term: '%s' in file: '%s'\n", search_term, filename); 
+fflush(stdout);
+*/
+return count_only ? match_count : 0;
 }
 
 
