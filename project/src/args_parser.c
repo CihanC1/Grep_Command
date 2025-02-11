@@ -7,13 +7,13 @@ Arguments parse_arguments(int argc, char *argv[]) {
     Arguments args = {0, 0, 0, 0, NULL, NULL, 0, 0}; 
 
     if (argc < 3) {
-        fprintf(stderr, "Nutzung: grep [OPTIONEN] SUCHBEGRIFF DATEI…\n");
+        fprintf(stderr, "Usage: grep [OPTIONS] SEARCH TERM FILE...\n");
         exit(EXIT_FAILURE);
     }
 
     args.files = malloc((argc - 1) * sizeof(char *));
     if (!args.files) {
-        fprintf(stderr, "Speicherzuweisung fehlgeschlagen!\n");
+        fprintf(stderr, "Memory allocation failed!\n");
         exit(EXIT_FAILURE);
     }
 
@@ -51,7 +51,7 @@ printf("Args: case_insensitive=%d, invert_match=%d, count_matches=%d, show_line_
 
 if (args.pattern == NULL || args.file_count == 0) {
 
-        fprintf(stderr, "Fehler: Mindestens eine Datei und ein Suchbegriff müssen angegeben werden!\n");
+        fprintf(stderr, "Error: At least one file and one search term must be specified!\n");
         exit(EXIT_FAILURE);
     }
 
