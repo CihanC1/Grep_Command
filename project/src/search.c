@@ -20,6 +20,31 @@ void to_lowercase(char *str) {
         str[i] = tolower((unsigned char)str[i]);
     }
 }
+void highlight_matches(const char *line, const char *search_term, int ignore_case, int enable_colors) {
+    char *pos = (char *)line;
+    size_t term_len = strlen(search_term);
+
+    while (*pos) {
+        char *match = ignore_case ? strcasestr(pos, search_term) : strstr(pos, search_term);
+        if (!match) {
+            printf("%s", pos);
+            break;
+        }
+
+        // Eğer renk desteği açıksa, kırmızıya boya
+        if (enable_colors) {
+            printf("%.*s\033[1;31m%.*s\033[0m", (int)(match - pos), pos, (int)term_len, match);
+        } else {
+            printf("%.*s", (int)(match - pos), pos);
+            printf("%.*s", (int)term_len, match);
+        }
+
+        pos = match + term_len;
+    }
+}
+
+
+
 
 #pragma GCC diagnostic ignored "-Wnonnull-compare"
 
@@ -96,75 +121,34 @@ void *search_directory_thread(void *arg) {
 }
 
 
-void highlight_matches(const char *line, const char *search_term, int ignore_case) {
-    char *pos = (char *)line;
-    size_t term_len = strlen(search_term);
 
-    while (*pos) {
-        char *match = ignore_case ? strcasestr(pos, search_term) : strstr(pos, search_term);
-        if (!match) {
-            printf("%s", pos);
-            break;
-        }
-        printf("%.*s%s%.*s%s", (int)(match - pos), pos, RED, (int)term_len, match, RESET);
-        pos = match + term_len;
-    }
-}
 
 
 int search_file(const char *search_term, const char *filename, int ignore_case, int invert_match, int show_line_numbers, int count_only, SearchResultList *results) {
-/*if (!search_term) {
-    printf("[ERROR] search_file(): search_term is NULL\n");
-    fflush(stdout);
-}
-if (!filename) {
-    printf("[ERROR] search_file(): filename is NULL\n");
-    fflush(stdout);
-}
-if (!results) {
-    printf("[ERROR] search_file(): results is NULL\n");
-    fflush(stdout);
-}
-*/
+
 if (!search_term || !filename || !results) {
     printf("[DEBUG/ERROR] search_file() exited early due to NULL parameter.\n");
     fflush(stdout);
     return 0;
 }
-/*printf("[DEBUG] search_file() çalışıyor: '%s' içinde '%s' aranıyor...\n", filename, search_term);
-fflush(stdout);
-*/
-    FILE *file = fopen(filename, "r");
+  FILE *file = fopen(filename, "r");
     if (!file) {
         fprintf(stderr, "grep: %s: No such file or directory\n", filename);
 fflush(stdout);
     perror("[ERROR] fopen");
 	return 0;
     }
-/*printf("[DEBUG] File opened successfully: %s\n", filename);
-fflush(stdout);
-*/
+
     char line[BUFFER_SIZE];
     int line_number = 1, match_count = 0;
 
     while (fgets(line, sizeof(line), file)) {
-/*printf("[DEBUG] Satır okundu: %s", line);
-fflush(stdout);
-*/
-/*printf("[DEBUG] search_file() çağırıldı: '%s' içinde '%s' aranıyor... Case-Insensitive: %d\n", filename, search_term, ignore_case);
-fflush(stdout);
-*/
-	    int match = ignore_case ? (strcasestr(line, search_term) != NULL) : (strstr(line, search_term) != NULL);
-/*	    printf("[DEBUG] Checking match: '%s' içinde '%s' -> Case-Insensitive: %d\n", line, search_term, ignore_case);
-fflush(stdout);
-*/
+    int match = ignore_case ? (strcasestr(line, search_term) != NULL) : (strstr(line, search_term) != NULL);
+
 	    if (invert_match) match = !match;
 
         if (match) {
-/*           printf("[DEBUG] Match found in file: %s | Line %d: %s\n", filename, line_number, line);
-fflush(stdout);
-*/
-	       	match_count++;
+    	match_count++;
             if (!count_only) {
                 printf("%s: ", filename);
 fflush(stdout);
@@ -174,7 +158,7 @@ fflush(stdout);
 fflush(stdout);
 
                 }
-                highlight_matches(line, search_term, ignore_case);
+                highlight_matches(line, search_term, ignore_case, enable_colors);
             }
 
 	}
@@ -256,3 +240,38 @@ void search_directory(const char *dir_name, const char *search_term, int ignore_
 
     closedir(dir);
 }
+void search_stdin(const char *search_term, int ignore_case, int invert_match, int show_line_numbers, int count_only, SearchResultList *results) {
+    if (!search_term) {
+        fprintf(stderr, "[ERROR] search_stdin() received NULL search_term.\n");
+        return;
+    }
+    if (!results) {
+        fprintf(stderr, "[ERROR] search_stdin() received NULL results.\n");
+        return;
+    }
+
+    char line[BUFFER_SIZE];
+    int line_number = 1;
+    int match_count = 0;
+
+    while (fgets(line, sizeof(line), stdin)) {
+        int match = ignore_case ? (strcasestr(line, search_term) != NULL) : (strstr(line, search_term) != NULL);
+        if (invert_match) match = !match;
+
+        if (match) {
+            match_count++;
+            if (!count_only) {
+                if (show_line_numbers) {
+                    printf("%d: ", line_number);
+                }
+                highlight_matches(line, search_term, ignore_case, enable_colors);
+            }
+        }
+        line_number++;
+    }
+
+    if (count_only) {
+        printf("Total Matches: %d\n", match_count);
+    }
+}
+

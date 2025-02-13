@@ -8,6 +8,7 @@
 #define BUFFER_SIZE 1024
 
 extern pthread_mutex_t print_mutex;
+extern int enable_colors;
 
 
 typedef struct SearchResult {

@@ -9,17 +9,46 @@
 #include "../modules/args_parser.h"
 #include "../modules/thread.h"
 
+int enable_colors; // ✅ Global değişken burada tanımlandı
+
+
 #define TASK_CAPACITY 100  // Maximum number of tasks in the queue
 
 static thread_pool_t pool; // Define thread pool globally
 
 int main(int argc, char *argv[])
 {
-    if (argc < 3)
-    {
-        printf("Usage: %s [-i] [-v] [-n] [-c] [-r] <search_term> <file1> [file2 ...]\n", argv[0]);
-        return 1;
+    enable_colors = isatty(STDOUT_FILENO); // Eğer terminalse renkleri aç
+  
+    if (argc == 2 || (argc > 2 && argv[1][0] != '-')) {
+        struct stat statbuf;
+        if (fstat(STDIN_FILENO, &statbuf) == 0 && !isatty(STDIN_FILENO)) {
+            printf("[INFO] No file provided, reading from stdin...\n");
+    
+            // Bellek tahsisi
+            SearchResultList *results = malloc(sizeof(SearchResultList));
+            if (!results) {
+                fprintf(stderr, "Memory allocation failed!\n");
+                return 1;
+            }
+            results->head = NULL;
+            pthread_mutex_init(&results->mutex, NULL);
+    
+            // **Arama terimini komut satırından al!**
+            if (argc < 2) {
+                fprintf(stderr, "[ERROR] No search term provided!\n");
+                return 1;
+            }
+            const char *search_term = argv[1]; // ✅ Arama terimi komut satırından alınıyor
+    
+            // stdin’den oku ve ara!
+            search_stdin(search_term, 0, 0, 0, 0, results);
+            free_search_results(results);
+            return 0;
+        }
     }
+    
+    
 
     // **Parse Command-Line Arguments**
     Arguments args = parse_arguments(argc, argv);
@@ -52,7 +81,6 @@ int main(int argc, char *argv[])
         {
             if (args.recursive)
             {
-		    printf("[ONEMLI DEBUG]! Ne zaman giriyor buraya ve burasi neden threadste degil?");
                 search_directory(args.files[i], args.pattern, args.case_insensitive, args.invert_match, 
                                  args.show_line_numbers, args.count_matches, results);
             }

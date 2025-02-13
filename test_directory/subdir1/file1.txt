@@ -1,0 +1,3 @@
+Dies ist eine Testdatei.auf
+Wir testen die Suche.Auf
+Das ist eine weitere Zeile.

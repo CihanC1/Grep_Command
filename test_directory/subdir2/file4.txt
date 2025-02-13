@@ -1,0 +1,3 @@
+Ein weiteres Beispiel.
+Threads und Prozesse.
+Alles funktioniert korrekt.

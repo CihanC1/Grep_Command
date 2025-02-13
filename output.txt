@@ -1,0 +1,4 @@
+[INFO] No file provided, reading from stdin...
+Bu satırda ise aranan [31mkelime[0m o yok.
+Bu satırda Test [31mkelime[0msi ve KELİME de var.
+[31mkelime[0m küçük harfle burada var.
