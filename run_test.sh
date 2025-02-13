@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Zu testendes Programm
+
 EXEC="./mygrep"
 
-# Testverzeichnis und Dateien vorbereiten
+
 TEST_DIR="testverzeichnis"
 TEST_FILE="${TEST_DIR}/test_datei.txt"
 RECURSIVE_FILE="${TEST_DIR}/test_rekursiv.txt"
@@ -17,7 +17,7 @@ echo "Farbige GREP-Ausgabe." >> $TEST_FILE
 
 echo "GREP Verzeichnis-Test" > $RECURSIVE_FILE
 
-# Test 1: Einfache Suche
+
 EXPECTED="Dies ist ein GREP-Test."
 RESULT=$($EXEC "GREP" $TEST_FILE)
 if echo "$RESULT" | grep -q "$EXPECTED"; then
@@ -28,7 +28,7 @@ else
     echo "Erhalten: '$RESULT'"
 fi
 
-# Test 2: Groß-/Kleinschreibung ignorieren (-i)
+
 EXPECTED="Dies ist ein GREP-Test.
 Farbige GREP-Ausgabe."
 RESULT=$($EXEC -i "grep" $TEST_FILE)
@@ -40,7 +40,7 @@ else
     echo "Erhalten: '$RESULT'"
 fi
 
-# Test 3: Negierte Suche (-v)
+
 EXPECTED="Dies ist eine Testdatei.
 Eine weitere Zeile."
 RESULT=$($EXEC -v "GREP" $TEST_FILE)
@@ -52,7 +52,7 @@ else
     echo "Erhalten: '$RESULT'"
 fi
 
-# Test 4: Zeilennummern anzeigen (-n)
+
 EXPECTED="2:Dies ist ein GREP-Test.
 4:Farbige GREP-Ausgabe."
 RESULT=$($EXEC -n "GREP" $TEST_FILE)
@@ -64,7 +64,7 @@ else
     echo "Erhalten: '$RESULT'"
 fi
 
-# Test 5: STDIN mit Pipe testen
+
 EXPECTED="GREP Test"
 RESULT=$(echo "GREP Test" | $EXEC "GREP")
 if echo "$RESULT" | grep -q "GREP Test"; then
@@ -75,7 +75,7 @@ else
     echo "Erhalten: '$RESULT'"
 fi
 
-# Test 6: Rekursive Suche (-r)
+
 EXPECTED="testverzeichnis/test_rekursiv.txt:GREP Verzeichnis-Test"
 RESULT=$($EXEC -r "GREP" $TEST_DIR)
 if echo "$RESULT" | grep -q "GREP Verzeichnis-Test"; then
@@ -86,7 +86,7 @@ else
     echo "Erhalten: '$RESULT'"
 fi
 
-# Test 7: Ungültige Datei-Fehlermeldung
+
 RESULT=$($EXEC "GREP" "nicht_existente_datei.txt" 2>&1)
 if echo "$RESULT" | grep -q "No such file or directory"; then
     echo "[PASS] Fehlerbehandlung für ungültige Datei erfolgreich"
@@ -96,7 +96,7 @@ else
     echo "Erhalten: '$RESULT'"
 fi
 
-# Test 8: Leere Datei Test
+
 touch leer.txt
 RESULT=$($EXEC "GREP" leer.txt)
 if [ -z "$RESULT" ]; then
@@ -108,4 +108,4 @@ else
 fi
 rm leer.txt
 
-echo "✔ Alle Tests abgeschlossen!"
+echo "Alle Tests abgeschlossen!"
