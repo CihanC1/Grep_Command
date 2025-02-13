@@ -1,0 +1,4 @@
+Dies ist eine Testdatei.
+Dies ist ein GREP-Test.
+Eine weitere Zeile.
+Farbige GREP-Ausgabe.

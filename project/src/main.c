@@ -9,7 +9,6 @@
 #include "../modules/args_parser.h"
 #include "../modules/thread.h"
 
-int enable_colors; // ✅ Global değişken burada tanımlandı
 
 
 #define TASK_CAPACITY 100  // Maximum number of tasks in the queue
