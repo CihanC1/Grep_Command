@@ -72,4 +72,4 @@ Für Fragen oder Anregungen kontaktieren Sie:
 - **Yusuf Oemer Karatas**: [yusufoemer.karatas@study.thws.de](mailto:yusufoemer.karatas@study.thws.de) - [GitHub](https://github.com/yusufoemerkaratas)  
 - **Cihan Can**: [cihan.can@study.thws.de](mailto:cihan.can@study.thws.de) - [GitHub](https://github.com/CihanC1)  
 - **Beyza Betul Ay**: [beyzabetul.ay@study.thws.de](mailto:beyzabetul.ay@study.thws.de) - [GitHub](https://github.com/kapheria)  
-- **Yusuferen Colak**: [yusuferen.colak@study.thws.de](mailto:yusuferen.colak@study.thws.de)  
+- **Yusuferen Colak**: [yusuf.colak@study.thws.de](mailto:yusuf.colak@study.thws.de) - [GitHub](https://github.com/yusuferencolak) 
