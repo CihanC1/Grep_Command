@@ -1,4 +1,0 @@
-Bu bir test dosyasıdır.
-Bu bir GREP testi.
-Başka bir satır.
-Renkli GREP çıktısı.

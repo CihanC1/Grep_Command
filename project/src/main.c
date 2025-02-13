@@ -3,67 +3,72 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
-#include <unistd.h>
+#include <unistd.h> 
 #include "../modules/globals.h"
 #include "../modules/search.h"
 #include "../modules/args_parser.h"
 #include "../modules/thread.h"
 
-#define TASK_KAPAZITÄT 100
 
-static thread_pool_t pool;
+
+#define TASK_CAPACITY 100
+
+static thread_pool_t pool; 
 
 int main(int argc, char *argv[])
 {
-    enable_colors = isatty(STDOUT_FILENO);
-
-    if (argc == 2 || (argc > 2 && argv[1][0] != '-'))
-    {
+    enable_colors = isatty(STDOUT_FILENO); 
+  
+    if (argc == 2 || (argc > 2 && argv[1][0] != '-')) {
         struct stat statbuf;
-        if (fstat(STDIN_FILENO, &statbuf) == 0 && !isatty(STDIN_FILENO))
-        {
-            printf("[INFO] Keine Datei angegeben, lese aus der Standardeingabe...\n");
-
+        if (fstat(STDIN_FILENO, &statbuf) == 0 && !isatty(STDIN_FILENO)) {
+            printf("[INFO] No file provided, reading from stdin...\n");
+    
             SearchResultList *results = malloc(sizeof(SearchResultList));
-            if (!results)
-            {
-                fprintf(stderr, "Fehler: Speicherzuweisung fehlgeschlagen!\n");
+            if (!results) {
+                fprintf(stderr, "Memory allocation failed!\n");
                 return 1;
             }
             results->head = NULL;
             pthread_mutex_init(&results->mutex, NULL);
-
-            if (argc < 2)
-            {
-                fprintf(stderr, "[FEHLER] Kein Suchbegriff angegeben!\n");
+    
+            if (argc < 2) {
+                fprintf(stderr, "[ERROR] No search term provided!\n");
                 return 1;
             }
             const char *search_term = argv[1];
-
+    
+        
             search_stdin(search_term, 0, 0, 0, 0, results);
             free_search_results(results);
             return 0;
         }
     }
+    
+    
 
+    // **Parse Command-Line Arguments**
     Arguments args = parse_arguments(argc, argv);
 
-#ifdef DEBUG
-    printf("Argumente: Groß-/Kleinschreibung ignorieren=%d, invertierte Übereinstimmung=%d, Anzahl der Übereinstimmungen=%d, Zeilennummern anzeigen=%d, rekursiv=%d\n",
+    #ifdef DEBUG
+    printf("Args: case_insensitive=%d, invert_match=%d, count_matches=%d, show_line_numbers=%d, recursive=%d\n",
            args.case_insensitive, args.invert_match, args.count_matches, args.show_line_numbers, args.recursive);
-#endif
+    #endif
 
-    thread_pool_init(&pool, TASK_KAPAZITÄT, &args);
+    // **Initialize the Thread Pool**
+    thread_pool_init(&pool, TASK_CAPACITY, &args);  
 
+    // **Allocate Memory for Results (Thread-Safe)**
     SearchResultList *results = malloc(sizeof(SearchResultList));
     if (!results)
     {
-        fprintf(stderr, "Fehler: Speicherzuweisung fehlgeschlagen!\n");
+        fprintf(stderr, "Memory allocation failed!\n");
         exit(1);
     }
     results->head = NULL;
     pthread_mutex_init(&results->mutex, NULL);
 
+    // **Iterate Over Files and Add Tasks**
     for (int i = 0; i < args.file_count; i++)
     {
         struct stat path_stat;
@@ -73,12 +78,12 @@ int main(int argc, char *argv[])
         {
             if (args.recursive)
             {
-                search_directory(args.files[i], args.pattern, args.case_insensitive, args.invert_match,
+                search_directory(args.files[i], args.pattern, args.case_insensitive, args.invert_match, 
                                  args.show_line_numbers, args.count_matches, results);
             }
             else
             {
-                fprintf(stderr, "Fehler: %s ist ein Verzeichnis, aber das -r-Flag wurde nicht angegeben.\n", args.files[i]);
+                fprintf(stderr, "Error: %s is a directory, but -r flag was not provided.\n", args.files[i]);
             }
         }
         else
@@ -87,11 +92,14 @@ int main(int argc, char *argv[])
         }
     }
 
-    sleep(1);
+    // **Wait for Tasks to Complete**
+    sleep(1);  // Adjust if needed to allow workers to process tasks
 
+    // **Shutdown and Cleanup**
     thread_pool_destroy(&pool);
     free_search_results(results);
     free(args.files);
 
     return 0;
 }
+
