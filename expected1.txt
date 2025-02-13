@@ -1,2 +1,0 @@
-test1.txt: This is a test file.
-test1.txt: Another test line.

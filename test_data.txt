@@ -1,8 +1,0 @@
-Bu bir test dosyasıdır.
-Aranacak  burada geçmiyor.
-Bu satırda ise aranan kelime o yok.
-KELIME büyük harfle burada var.
-Bu satırda Test kelimesi ve KELİME de var.
-Rastgele bir satır daha.
-Burada hiçbir şey eşleşmeyecek.
-kelime küçük harfle burada var.
