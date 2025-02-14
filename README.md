@@ -60,7 +60,7 @@ Dies generiert die ausführbare Datei `mygrep`.
    ```  
 
 
-## 📌 Automatisierte Tests (`make test`)
+## Automatisierte Tests (`make test`)
 Das Projekt enthält eine Test-Suite, die mit `make test` ausgeführt werden kann.
 
 ### **Testausführung:**
