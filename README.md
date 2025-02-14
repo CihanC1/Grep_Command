@@ -23,7 +23,7 @@ Stellen Sie sicher, dass die folgenden Abhängigkeiten installiert sind:
 ### Build-Anleitung  
 Zum Kompilieren und Erstellen des Programms führen Sie aus:  
 ```sh  
-make clean && make all  
+make clean && make all 
 ```  
 Dies generiert die ausführbare Datei `mygrep`.  
 
