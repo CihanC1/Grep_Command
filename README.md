@@ -23,7 +23,7 @@ Stellen Sie sicher, dass die folgenden Abhängigkeiten installiert sind:
 ### Build-Anleitung  
 Zum Kompilieren und Erstellen des Programms führen Sie aus:  
 ```sh  
-make clean && make  
+make clean && make all  
 ```  
 Dies generiert die ausführbare Datei `mygrep`.  
 
@@ -71,5 +71,5 @@ Sie können gerne beitragen, indem Sie **Fehlermeldungen**, **Feature-Anfragen**
 Für Fragen oder Anregungen kontaktieren Sie:  
 - **Yusuf Oemer Karatas**: [yusufoemer.karatas@study.thws.de](mailto:yusufoemer.karatas@study.thws.de) - [GitHub](https://github.com/yusufoemerkaratas)  
 - **Cihan Can**: [cihan.can@study.thws.de](mailto:cihan.can@study.thws.de) - [GitHub](https://github.com/CihanC1)  
-- **Beyza Betul Ay**: [beyzabetul.ay@study.thws.de](mailto:beyzabetul.ay@study.thws.de) - [GitHub](https://github.com/kapheria)  
+- **Beyza Betul Ay**: [beyzabetul.ay@study.thws.de](mailto:beyzabetuel.ay@study.thws.de) - [GitHub](https://github.com/Bbeyzay)  
 - **Yusuferen Colak**: [yusuf.colak@study.thws.de](mailto:yusuf.colak@study.thws.de) - [GitHub](https://github.com/yusuferencolak) 
