@@ -1,0 +1,4 @@
+📌 Test 1: Suche nach 'Dorf' in test1.txt
+test/test1.txt: Es war einmal ein Dorf in den Bergen.  
+test/test1.txt: Ein alter Geschichtenerzähler kam ins Dorf.  
+test/test1.txt: So lebte die Tradition in dem kleinen Dorf weiter.  

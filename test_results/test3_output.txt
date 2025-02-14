@@ -1,0 +1,4 @@
+📌 Test 3: Rekursive Suche nach 'Buch'
+test//test2.txt: Er trug ein altes Buch bei sich.  
+test//test2.txt: Am Morgen fand die Bibliothekarin das Buch.  
+test//test2.txt: Goldene Buchstaben leuchteten auf der ersten Seite.  

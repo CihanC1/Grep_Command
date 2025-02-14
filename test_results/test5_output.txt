@@ -1,0 +1,1 @@
+📌 Test 5: Suche nach 'XYZ123' (sollte nicht gefunden werden)

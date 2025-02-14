@@ -1,0 +1,3 @@
+📌 Test 6: Zählung des Wortes 'die' in allen Testdateien
+test/test2.txt: 1
+test/test1.txt: 2
