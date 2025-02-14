@@ -64,11 +64,18 @@ void thread_pool_init(thread_pool_t *pool, int capacity, Arguments *args)
         exit(1);
     }
 
-    for (int i = 0; i < MAX_THREADS; i++)
-    {
-        if (pthread_create(&pool->threads[i], NULL, worker_thread, (void *)pool) != 0)
-        {
-            fprintf(stderr, "[FEHLER] Erstellung des Worker-Threads %d fehlgeschlagen\n", i);
+    pool->threads = malloc(sizeof(pthread_t) * MAX_THREADS);
+    if (!pool->threads) {
+        fprintf(stderr, "[ERROR] Memory allocation for threads failed!\n");
+        free(pool->tasks);
+        exit(1);
+    }
+
+    for (int i = 0; i < MAX_THREADS; i++) {
+        int err = pthread_create(&pool->threads[i], NULL, worker_thread, (void *)pool);
+        if (err != 0) {
+            fprintf(stderr, "[ERROR] Failed to create worker thread %d: %s\n", i, strerror(err));
+            exit(1); // Programı hemen durdur
         }
     }
 }
