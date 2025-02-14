@@ -60,6 +60,39 @@ Dies generiert die ausführbare Datei `mygrep`.
    ```  
 
 
+## 📌 Automatisierte Tests (`make test`)
+Das Projekt enthält eine Test-Suite, die mit `make test` ausgeführt werden kann.
+
+### **Testausführung:**
+1️⃣ **Wechseln Sie in das Projektverzeichnis:**
+   ```sh
+   cd /path/to/Grep_Command
+   ```
+2️⃣ **Führen Sie die Tests aus:**
+   ```sh
+   make test
+   ```
+3️⃣ **Erfolgreiche Tests zeigen eine ✅ Meldung, fehlgeschlagene Tests eine ❌ Meldung.**
+
+### **Testresultate anzeigen:**
+Alle Testausgaben werden im Verzeichnis `test_results/` gespeichert. Um Ergebnisse zu sehen:
+```sh
+cat test_results/test1_output.txt
+cat test_results/test2_output.txt
+cat test_results/test3_output.txt
+```
+
+### **Durchgeführte Tests:**
+| **Test-Name** | **Beschreibung** | **Befehl** |
+|-------------|-------------|-----------|
+| **Test 1** | Suche nach "Dorf" in `test1.txt`. | `./mygrep "Dorf" test/test1.txt` |
+| **Test 2** | Groß-/Kleinschreibung ignorieren. | `./mygrep -i "dorf" test/test1.txt` |
+| **Test 3** | Rekursive Suche in allen Testdateien. | `./mygrep -r "Buch" test/` |
+| **Test 4** | Zeilennummern anzeigen. | `./mygrep -n "gold" test/test2.txt` |
+| **Test 5** | Suche nach nicht existierendem Wort. | `./mygrep "XYZ123" test/test1.txt` |
+| **Test 6** | Zählung des Wortes "die" in allen Dateien. | `./mygrep -c "die" test/*.txt` |
+
+✅ Falls ein Test fehlschlägt, überprüfen Sie die Testausgaben und die Logs.
 
 ## 📜Lizenz  
 Dieses Projekt ist **Open-Source** und steht unter der **MIT-Lizenz** zur Verfügung.  
